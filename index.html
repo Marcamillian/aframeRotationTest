@@ -71,7 +71,15 @@
             <!--
             <button class="animate-to"> Rotate Model To </button>
             <button class="rotate-by"> Rotate Model By </button>
-            -->
+            --> 
+        </div>
+
+        <div class="instructions">
+            <h1> Two rotation positions appear to be the same </h1>
+            <h2> Case 1 </h2>
+            <p> pitch: 270 | yaw: 90 | roll: 90 <br> is the same as <br>  pitch: 270 | yaw: 180 | roll: 0 </p>
+            <h2> Case 2 </h2>
+            <p> pitch: 270 | yaw: 270 | roll: 90 <br> is the same as <br>  pitch: 270 | yaw: 0 | roll: 0 </p>
         </div>
     </body>
 
@@ -90,6 +98,16 @@
         .controls input,
         .controls button{
             display:block;
+        }
+        .instructions{
+            position:absolute;
+            top:0px;
+            right:0px;
+            margin:10px;
+            color:white;
+            text-align:center;
+
+            width:25vw;
         }
     
     </style>
