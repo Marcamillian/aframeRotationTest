@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+    <head>  
+        <meta charset="utf-8">
+        <title> AFrame rotation bug </title>
+        <script src="aframe-v0.8.0.js"></script>
+    </head>
+
+    <body>
+        <a-scene>
+            <a-entity class="shape-container" rotation="0 0 0">
+                <!-- YAW AXIS - vertical -->
+                <a-cylinder position = "0 0 0"
+                            radius = "0.25" 
+                            height = "4"
+                            color = "red">
+
+                    <a-cone position="0 2 0"
+                            color="red",
+                            radius-bottom="0.5">
+                    </a-cone>
+
+                </a-cylinder>
+                <!-- PITCH AXIS - horizontal axis -->
+                <a-cylinder position = "0 0 0"
+                            radius = "0.25"
+                            height = "4"
+                            rotation = "0 0 90"
+                            color ="green">
+
+                    <a-cone position="0 2 0"
+                            color="green",
+                            radius-bottom="0.5">
+                    </a-cone>
+
+                </a-cylinder>
+
+                <!-- ROLL AXIS - into screen -->
+                <a-cylinder position = "0 0 0" 
+                            height = "4"
+                            radius = "0.25"
+                            rotation = "90 0 0"
+                            color = "yellow">
+
+                    <a-cone position="0 2 0"
+                            color="yellow",
+                            radius-bottom="0.5">
+                    </a-cone>
+
+                </a-cylinder>
+
+            </a-entity>
+
+            <a-entity position="0 0 3.8">
+                <a-camera></a-camera>
+            </a-entity>
+
+            <a-sky color="grey"></a-sky>
+        </a-scene>
+
+
+        <div class="controls">
+            <label> pitch </label>
+            <input type="number" class="input-pitch">
+            <label> yaw </label>
+            <input type="number" class="input-yaw">
+            <label> roll </label>
+            <input type="number" class="input-roll">
+            <button class="set-rotation"> Set Model To </button>
+            <!--
+            <button class="animate-to"> Rotate Model To </button>
+            <button class="rotate-by"> Rotate Model By </button>
+            -->
+        </div>
+    </body>
+
+    <style>
+        .controls{
+            position:absolute;
+            top:0px;
+            left:0px;
+            margin:10px;
+            color:white;
+            font-size: 2em;
+        }
+        .controls button{
+            margin:20px;
+        }
+        .controls input,
+        .controls button{
+            display:block;
+        }
+    
+    </style>
+
+    <script>
+        let container = document.querySelector(".shape-container");
+        
+        let inputPitch = document.querySelector(".input-pitch");
+        let inputYaw = document.querySelector(".input-yaw");
+        let inputRoll = document.querySelector(".input-roll");
+
+        let setButton = document.querySelector('.set-rotation');
+        let animateToButton = document.querySelector('.animate-to');
+        let rotateToButton = document.querySelector('rotate-to');
+
+
+        inputPitch.value = 0;
+        inputYaw.value = 0;
+        inputRoll.value = 0;
+
+        setButton.addEventListener('click',function(){
+            let rotationValue = `${inputPitch.valueAsNumber} ${inputYaw.valueAsNumber} ${inputRoll.valueAsNumber}`
+            container.setAttribute('rotation', rotationValue)
+        })
+
+    </script>
+</html>
